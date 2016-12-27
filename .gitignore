@@ -16,3 +16,6 @@ dist/
 
 # Staticfiles
 staticfiles/
+
+# IDEA project files
+.idea

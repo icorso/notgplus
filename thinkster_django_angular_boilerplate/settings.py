@@ -24,9 +24,6 @@ DEBUG = os.environ.get('DEBUG', True)
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -38,6 +35,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'compressor',
+    'authentication',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -113,3 +111,6 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
+
+# Change authentication model to use Account instead of User
+AUTH_USER_MODEL = 'authentication.Account'
