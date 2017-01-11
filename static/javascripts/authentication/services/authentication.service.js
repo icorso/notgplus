@@ -47,7 +47,23 @@
         username: username,
         password: password,
         email: email
-      });
+      }).then(registerSuccessFn, registerErrorFn);
+    }
+
+    /**
+    * @name registerSuccessFn
+    * @desc Log the new user in
+    */
+    function registerSuccessFn(data, status, headers, config) {
+      Authentication.login(email, password)
+    }
+
+    /**
+    * @name registerErrorFn
+    * @desc Log "Epic failure!" to the console
+    */
+    function registerErrorFn(data, status, headers, config) {
+      console.error('Epic failure!');
     }
 
     /**
@@ -61,7 +77,7 @@
     function login(email, password) {
       return $http.post('/api/v1/auth/login/', {
         email: email, password: password
-      }).then(loginSuccessFn, LoginErrorFn);
+      }).then(loginSuccessFn, loginErrorFn);
     }
 
     /**
@@ -125,6 +141,5 @@
      function unauthenticate() {
        delete $cookies.authenticatedAccount;
      }
-
   }
 })();
